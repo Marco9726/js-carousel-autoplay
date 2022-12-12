@@ -86,4 +86,18 @@ function play() {
     items[itemActive].classList.add('active');
     circles[itemActive].classList.add('active');
 }
+// assegno ad una costante il pulsante stop dell'HTML 
+const stop = document.getElementById('stop');
+// fermo l'autoplay al click di stop con clearInterval 
+stop.addEventListener('click', function(){
+    clearInterval(myPlay);
+})
+// assegno ad una costante il pulsante play dell'HTML 
+const Play = document.getElementById('play');
+// faccio ripartire l'autoplay al click di Play
+Play.addEventListener('click', function(){
+    myPlay = setInterval (play, 3000);
+})
+
+
 
