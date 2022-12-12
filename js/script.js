@@ -68,4 +68,22 @@ prev.addEventListener('click', function(){
     items[itemActive].classList.add('active');
     circles[itemActive].classList.add('active');
 })
+// assegno ad una variabile l'intervallo di tre secondi annunciando la funzione 
+let myPlay = setInterval (play, 3000);
+
+// creo la funzione per l'autoplay con il contenuto dell'addEventLisnter 
+function play() {
+    // elimino la classe active dagli elemnti precedenti
+    items[itemActive].classList.remove('active');
+    circles[itemActive].classList.remove('active');
+    //incremento il suo valore di 1
+    itemActive += 1
+    // se itemActive arriva 5, visualizza la prima immagine
+    if (itemActive > imagesArray.length - 1){
+        itemActive = 0;
+    }
+    //aggiungere la class active al nuovo elemento dell'array items
+    items[itemActive].classList.add('active');
+    circles[itemActive].classList.add('active');
+}
 
