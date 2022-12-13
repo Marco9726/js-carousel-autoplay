@@ -1,3 +1,18 @@
+// creo la funzione riutilizzabile per passare alla prossima slide 
+function goToNextSlide(){
+    // elimino la classe active dagli elemnti precedenti
+    items[itemActive].classList.remove('active');
+    circles[itemActive].classList.remove('active');
+    //incremento il suo valore di 1
+    itemActive += 1
+    // se itemActive arriva 5, visualizza la prima immagine
+    if (itemActive > imagesArray.length - 1){
+        itemActive = 0;
+    }
+    //aggiungere la class active al nuovo elemento dell'array items
+    items[itemActive].classList.add('active');
+    circles[itemActive].classList.add('active');
+}
 //Creo array immagini
 const imagesArray = [
     "01.webp",
@@ -37,20 +52,9 @@ circles[itemActive].classList.add('active');
 
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
-
+// al click del play invoco la funzione già creata 
 next.addEventListener('click', function(){
-    // elimino la classe active dagli elemnti precedenti
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    //incremento il suo valore di 1
-    itemActive += 1
-    // se itemActive arriva 5, visualizza la prima immagine
-    if (itemActive > imagesArray.length - 1){
-        itemActive = 0;
-    }
-    //aggiungere la class active al nuovo elemento dell'array items
-    items[itemActive].classList.add('active');
-    circles[itemActive].classList.add('active');
+    goToNextSlide()
     
 });
 
@@ -68,36 +72,21 @@ prev.addEventListener('click', function(){
     items[itemActive].classList.add('active');
     circles[itemActive].classList.add('active');
 })
-// assegno ad una variabile l'intervallo di tre secondi annunciando la funzione 
-let myPlay = setInterval (play, 3000);
-
-// creo la funzione per l'autoplay con il contenuto dell'addEventLisnter 
-function play() {
-    // elimino la classe active dagli elemnti precedenti
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    //incremento il suo valore di 1
-    itemActive += 1
-    // se itemActive arriva 5, visualizza la prima immagine
-    if (itemActive > imagesArray.length - 1){
-        itemActive = 0;
-    }
-    //aggiungere la class active al nuovo elemento dell'array items
-    items[itemActive].classList.add('active');
-    circles[itemActive].classList.add('active');
-}
+// dichiaro una variabile alla quale assegno l'intervallo ripetuto ogni 3 secondi della mia funzione 
+let myInterval = setInterval(goToNextSlide,3000);
 // assegno ad una costante il pulsante stop dell'HTML 
 const stop = document.getElementById('stop');
 // fermo l'autoplay al click di stop con clearInterval 
 stop.addEventListener('click', function(){
-    clearInterval(myPlay);
+    clearInterval(myInterval);
 })
 // assegno ad una costante il pulsante play dell'HTML 
 const Play = document.getElementById('play');
 // faccio ripartire l'autoplay al click di Play
 Play.addEventListener('click', function(){
-    myPlay = setInterval (play, 3000);
+    myInterval = setInterval(goToNextSlide, 3000);
 })
+
 
 
 
