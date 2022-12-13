@@ -81,4 +81,29 @@
 
 #buttons{
     text-align: center;
+    margin-top: .5rem;
+}
+
+#buttons i{
+    font-size: 1.5rem;
+}
+
+button{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border:none;
+    cursor: pointer;
+}
+
+#buttons button:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+
+#play{
+    background-color: lightgreen;
+}
+
+#stop{
+    background-color: rgb(242, 180, 65);
 }
